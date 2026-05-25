@@ -67,6 +67,53 @@ footer {
 .team-member {
     margin-bottom: 20px;
 }
+/* =====================================
+   SERVICE PAGE STYLES
+===================================== */
+.services-page .services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 40px 20px;
+}
+
+.services-page .service-card {
+  background: linear-gradient(135deg, goldenrod 0%, black 100%);
+  color: white;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 6px 18px rgba(102, 126, 234, 0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.services-page .service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4);
+}
+
+.services-page .service-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  filter: brightness(0.9);
+}
+
+.services-page .service-card-content {
+  padding: 10px;
+}
+
+.services-page .service-card-content h3 {
+  margin: 0 0 10px;
+  font-size: 22px;
+}
+
+.services-page .service-card-content p {
+  margin: 0;
+  font-size: 15px;
+  opacity: 0.9;
+  line-height: 1.5;
+}
 
 /* =====================================
    CONTACT PAGE STYLES
