@@ -15,17 +15,43 @@
         <a href="enquiry.html">Enquiry</a>
         <a href="contact.html">Contact</a>
     </nav>
-    <p>Fill in the form 
-        below:</p>
-    <form>
-        <label for="fname">Frist name:</label><br>
-        <input type="text" id="fname" name="fname"><br>
-        <label for="lname">Last name:</label><br>
-        <input type="text" id="lname" name="lname"><br>
-        <label for="subject">Subject:</label><br>
-        <input type="text" id="subject" name="subject"><br><br>
-        <input type="submit" value="Submit">
+   <section id="booking-section">
+    <center>
+    <h1 class="section-title">Appointment Details</h1>
+    </center>
+    <form id="booking-form" class="form-container">
+      <select id="service-form" class="form-input" required>
+        <h4 class="form">Service</h4>
+        <option v-alue="">Select a Service</option>
+        <option value="nails">Conrows</option>
+        <option value="skincare">Basic Installation</option>
+        <option value="skincare">Half-up half-down</option>
+        <option value="skincare">Side part</option>
+        <option value="lashes">Short square french nails</option>
+        <option value="skincare">Almond french nails</option>
+        <option value="skincare">Long stileto nails</option>
+        <option value="massage">Lashes</option>
+        <option value="hair">Facial scrub</option>
+        <option value="skincare">Face mask and steam</option>
+      </select>
+
+      <input type="date" id="date" class="form-input" required>
+      <input type="time" id="time" class="form-input" required>
+      <input type="text" id="name" class="form-input" placeholder="Your Name" required>
+      <input type="email" id="email" class="form-input" placeholder="Your Email" required>
+      <input type="tel" id="phone" class="form-input" placeholder="Your Phone Number" required>
     </form>
+  </section>
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 <footer>
     <p>&copy; 2026 Bola's Beauty Salon | All Rights Reserved</p>
 </footer>
