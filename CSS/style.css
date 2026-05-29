@@ -9,26 +9,46 @@ body {
     background-repeat: no-repeat;
     margin: 0;
     height: 100vh;
-    background-color: bisque;
+    background-color: white;
     margin: 0;
     font-family: Arial, sans-serif;
 }
+h1 {
+    display: flex;
+    justify-content: center;  /* Centers the content horizontally */
+    align-items: center;      /* Vertically aligns the image logo and the text */
+    gap: 600px;                /* Adds a clean space between the logo and the text */
+    text-align: center;       /* Fallback for older browsers */
+    margin-top: 20px;         /* Optional: Adds space above the heading */
+}
 
-nav {
+.navigation-bar {
     background-color: #333;
     padding: 15px;
     text-align: center;
+    position: -webkit-sticky; /* For Safari compatibility */
+    position: sticky;
+    top: 0;                   /* Tells it exactly where to stick (the very top) */
+    z-index: 1000;            /* Ensures it stays on top of text/forms when scrolling */
+    
+    /* Optional: Adding a background color and padding ensures 
+       your text doesn't clash with content behind it */
+    background-color: #333; 
+    padding: 10px 0;
+    width: 100%;
 }
 
-nav a {
+
+.navigation-bar a {
     color: white;
+    margin-right: 15px;
     text-decoration: none;
-    margin-right: 20px;
+    color: white;
+    font-weight: bold;
 }
 a:hover{
-    background-color: aqua;
+    background-color: goldenrod;
     text-shadow: white;
-
 }
 /*Footer styling*/
 footer {
@@ -39,31 +59,225 @@ footer {
 
 }
 
+
+
 /* =====================================
-   HOME PAGE STYLES
+    HOME PAGE STYLES
 ===================================== */
 
 .hero {
+    /* Optional: replace '../Images/hero-bg.jpg' with a real image path later if you want a background photo */
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.9)), url('../Images/hero-bg.jpg') no-repeat center center/cover;
     background-color: black;
-    padding: 100px;
+    padding: 80px 20px;          /* Replaces the <br> tags with uniform padding space */
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.hero-content {
+    max-width: 750px;
+}
+
+.hero-content h2 {
+    color: goldenrod;
+    font-size: 36px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.hero-content p {
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+/* Call to Action Button */
+.cta-button {
+    display: inline-block;
+    background-color: goldenrod;
+    color: black;
+    padding: 12px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 25px;
+    text-transform: uppercase;
+    font-size: 13px;
+    margin-top: 15px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+    background-color: white;
+}
+
+/* Structural container for your cards */
+.home-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    padding: 50px 20px;
+    background-color: #111111; /* Dark background to contrast your cards */
+}
+
+/* Enhanced styling for your original .home-card element */
 .home-card {
-    border: 1px solid #ccc;
-    padding: 20px;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    border: 1px solid rgba(218, 165, 32, 0.3); /* Subtle gold border border */
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.home-card:hover {
+    transform: translateY(-5px);
+    border-color: goldenrod;
+}
+
+.home-card h3 {
+    color: goldenrod;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.home-card p {
+    color: #cccccc;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
 }
 
 /* =====================================
    ABOUT PAGE STYLES
 ===================================== */
 
-.about-banner {
-    background-color: #f4f4f4;
-    padding: 80px;
-    text-align: center;
+/* Container wrapper for global spacing */
+.about-page-container {
+    background-color: #111111;
+    color: #ffffff;
+    padding-bottom: 60px;
 }
 
+/* Banner Styling */
+.about-banner {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.85)), url('../Images/about-bg.jpg') no-repeat center center/cover;
+    background-color: #000000;
+    padding: 100px 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(218, 165, 32, 0.2);
+}
+
+.about-banner h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 46px;
+    color: goldenrod;
+    margin: 0 0 10px 0;
+    letter-spacing: 1px;
+}
+
+.about-banner .subtitle {
+    font-size: 16px;
+    color: #cccccc;
+    margin: 0;
+}
+
+/* Story Timeline/Cards Layout */
+.about-story-section {
+    max-width: 850px;
+    margin: 60px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.story-card {
+    background-color: #161616;
+    border-left: 4px solid goldenrod;
+    padding: 30px;
+    border-radius: 0 12px 12px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Accent variant for the middle card */
+.story-card.pivot {
+    border-left-color: #ffffff;
+    background: linear-gradient(90deg, #161616 0%, #1a1a1a 100%);
+}
+
+.story-date {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: goldenrod;
+    margin-bottom: 12px;
+}
+
+.story-card.pivot .story-date {
+    color: #ffffff;
+}
+
+.story-card p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #dddddd;
+}
+
+/* Mission & Vision Grid Layout */
+.mission-vision-grid {
+    max-width: 1000px;
+    margin: 60px auto 20px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.mv-card {
+    background: linear-gradient(135deg, #000000 0%, #161616 100%);
+    border: 1px solid rgba(218, 165, 32, 0.2);
+    padding: 40px 30px;
+    border-radius: 16px;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.mv-card:hover {
+    transform: translateY(-5px);
+    border-color: goldenrod;
+}
+
+.mv-icon {
+    font-size: 32px;
+    color: goldenrod;
+    margin-bottom: 15px;
+}
+
+.mv-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: #ffffff;
+    margin: 0 0 15px 0;
+}
+
+.mv-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #cccccc;
+    margin: 0;
+}
+
+/* Optional Team Member support styling left in if needed */
 .team-member {
     margin-bottom: 20px;
 }
@@ -199,4 +413,174 @@ footer {
     background-color: aqua;
     text-shadow: black;
 
+}
+.contact-container {
+max-width: 1200px; /* Widened slightly to elegantly support all 3 columns */
+width: 100%;
+background: #ffffff;
+border-radius: 12px;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+overflow: hidden;
+margin: 40px auto;
+}
+
+.contact-wrapper {
+display: flex;
+width: 100%;
+align-items: stretch; /* Forces columns to be exactly equal heights */
+}
+
+/* COLUMN 1: SIDE DETAILS PANEL */
+.side-details {
+flex: 0.9; /* Slightly tighter proportional scale */
+background: black;
+color: #ffffff;
+padding: 35px;
+display: flex;
+flex-direction: column;
+}
+
+.side-details h2 {
+font-size: 1.8rem;
+font-weight: 700;
+margin-bottom: 12px;
+color: #ffffff;
+}
+
+.side-desc {
+font-size: 0.85rem;
+line-height: 1.5;
+opacity: 0.9;
+margin-bottom: 30px;
+}
+
+.info-links {
+display: flex;
+flex-direction: column;
+gap: 25px;
+}
+
+.info-item {
+display: flex;
+align-items: flex-start;
+gap: 15px;
+}
+
+.info-icon {
+background: rgba(255, 255, 255, 0.2);
+width: 44px;
+height: 44px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.1rem;
+flex-shrink: 0;
+}
+
+.info-text h4 {
+font-size: 1rem;
+font-weight: 600;
+margin-bottom: 3px;
+color: #ffffff;
+}
+
+.info-text p {
+font-size: 0.85rem;
+opacity: 0.85;
+line-height: 1.4;
+}
+
+/* COLUMN 2: FORM BOX CONTAINER */
+.form-container {
+flex: 1.2;
+padding: 35px;
+background: #ffffff;
+position: relative;
+}
+
+.form-container h2 {
+font-size: 1.8rem;
+color: #333333;
+margin-bottom: 25px;
+font-weight: 600;
+}
+
+.input-group {
+margin-bottom: 15px;
+}
+
+.input-group label {
+display: block;
+font-size: 0.85rem;
+font-weight: 500;
+color: #666666;
+margin-bottom: 6px;
+text-align: left;
+}
+
+.input-group input,
+.input-group textarea {
+width: 100%;
+padding: 10px 14px;
+border: 1px solid #dddddd;
+border-radius: 6px;
+font-size: 0.9rem;
+outline: none;
+transition: border-color 0.3s ease;
+background: #fafafa;
+color: #333333;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+border-color: #00bcd4;
+background: #ffffff;
+}
+
+.input-group textarea {
+resize: none;
+}
+
+.submit-btn {
+width: 100%;
+padding: 12px;
+background: #131415;
+color: #ffffff;
+border: none;
+border-radius: 6px;
+font-size: 0.95rem;
+font-weight: 600;
+cursor: pointer;
+transition: background 0.3s ease, transform 0.1s ease;
+margin-top: 5px;
+}
+
+.submit-btn:hover {
+background: goldenrod;
+}
+
+/* RESPONSIVE MEDIA BREAKPOINTS */
+@media (max-width: 991px) {
+.contact-wrapper {
+flex-direction: column;
+}
+
+.side-details, .form-container, .map-container-panel {
+width: 100%;
+flex: none;
+}
+
+.side-details, .form-container {
+padding: 30px 20px;
+}
+
+.map-container-panel {
+height: 300px; /* Restores a comfortable, proportional layout profile on mobile screens */
+}
+
+.map-container-panel iframe {
+position: relative;
+height: 300px;
+}
 }
