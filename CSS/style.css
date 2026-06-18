@@ -153,6 +153,79 @@ footer {
     line-height: 1.6;
     margin: 0;
 }
+/* Full-screen Dark Overlay */
+.home-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+/* Modal Content Box */
+.home-modal-content {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 450px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+    animation: homePopIn 0.3s ease-out;
+}
+
+/* Modal Image Element */
+.home-modal-img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+/* Close Button (X) */
+.home-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+}
+
+.home-modal-close:hover {
+    color: goldenrod;
+}
+
+/* Dynamic Action Button inside Modal */
+.home-modal-btn {
+    display: inline-block;
+    background-color: #131415;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background 0.2s;
+}
+
+.home-modal-btn:hover {
+    background-color: goldenrod;
+}
+
+/* Subtle Zoom Animation */
+@keyframes homePopIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
 
 /* =====================================
    ABOUT PAGE STYLES
@@ -328,7 +401,61 @@ footer {
   opacity: 0.9;
   line-height: 1.5;
 }
+/* The hidden wrapper overlay */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    padding-top: 60px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.85); /* Smooth dark background */
+}
 
+/* The actual popup image */
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 75vh;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    animation: zoomIn 0.3s ease; /* Subtle entry effect */
+}
+
+/* Close Button (X) */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: goldenrod /* Change color on hover */
+}
+
+/* Change cursor to pointer for service images to show they are clickable */
+.service-card img {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.service-card img:hover {
+    transform: scale(1.02); /* Slight lift on hover */
+}
+
+/* Simple entry animation */
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
 /* =====================================
    CONTACT PAGE STYLES
 ===================================== */
