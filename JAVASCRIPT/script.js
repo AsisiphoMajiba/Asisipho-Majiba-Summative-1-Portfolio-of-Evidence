@@ -428,3 +428,111 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+// ==========================================
+// ENQUIRY PAGE: BATCH FORM VALIDATION
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+    const bookingForm = document.getElementById("booking-form");
+
+    if (bookingForm) {
+        bookingForm.addEventListener("submit", (event) => {
+            // Stop page from refreshing instantly
+            event.preventDefault();
+
+            // Select all input fields
+            const serviceField = document.getElementById("service-form");
+            const dateField = document.getElementById("date");
+            const timeField = document.getElementById("time");
+            const nameField = document.getElementById("name");
+            const emailField = document.getElementById("email");
+            const phoneField = document.getElementById("phone");
+
+            // Extract values and trim whitespace
+            const serviceValue = serviceField.value;
+            const dateValue = dateField.value;
+            const timeValue = timeField.value;
+            const nameValue = nameField.value.trim();
+            const emailValue = emailField.value.trim();
+            const phoneValue = phoneField.value.trim();
+
+            // Clear all previous errors to calculate fresh validation state
+            document.querySelectorAll(".inline-error-msg").forEach(msg => msg.remove());
+
+            let hasErrors = false;
+
+            // Helper function to insert error text right beneath the targeted input
+            const showError = (field, message) => {
+                hasErrors = true;
+                const errorElement = document.createElement("span");
+                errorElement.className = "inline-error-msg";
+                errorElement.textContent = message;
+                errorElement.style.color = "#e74c3c";
+                errorElement.style.fontSize = "0.8rem";
+                errorElement.style.display = "block";
+                errorElement.style.marginTop = "5px";
+                errorElement.style.textAlign = "left";
+                field.parentNode.appendChild(errorElement);
+            };
+
+            // 1. Check Service Selection
+            if (serviceValue === "" || serviceValue.includes("Select a Service")) {
+                showError(serviceField, "Please select a service treatment.");
+            }
+
+            // 2. Check Appointment Date
+            if (dateValue === "") {
+                showError(dateField, "Please choose an appointment date.");
+            }
+
+            // 3. Check Arrival Time
+            if (timeValue === "") {
+                showError(timeField, "Please pick a treatment arrival time.");
+            }
+
+            // 4. Check Customer Name
+            if (nameValue === "") {
+                showError(nameField, "Name is required.");
+            }
+
+            // 5. Check Email Pattern
+            if (emailValue === "") {
+                showError(emailField, "Email address is required.");
+            } else {
+                const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if (!emailPattern.test(emailValue)) {
+                    showError(emailField, "Please provide a valid email format.");
+                }
+            }
+
+            // 6. Check Telephone Contact Number
+            if (phoneValue === "") {
+                showError(phoneField, "Phone number is required.");
+            } else {
+                const phonePattern = /^\+?[0-9\s\-]{7,15}$/;
+                if (!phonePattern.test(phoneValue)) {
+                    showError(phoneField, "Please enter a valid phone number.");
+                }
+            }
+
+            // ---- Evaluation Execution Block ----
+            if (hasErrors) {
+                // Focus on the first invalid field in chronological form sequence
+                if (serviceValue === "" || serviceValue.includes("Select a Service")) serviceField.focus();
+                else if (dateValue === "") dateField.focus();
+                else if (timeValue === "") timeField.focus();
+                else if (nameValue === "") nameField.focus();
+                else if (emailValue === "") emailField.focus();
+                else phoneField.focus();
+                return; // Stop form execution processing
+            }
+
+            // ---- Success Trigger ----
+            // Connects natively to your global showToast notification function
+            if (typeof showToast === "function") {
+                showToast(`Thank you, ${nameValue}! Your appointment enquiry has been submitted.`, "success");
+            }
+            
+            bookingForm.reset(); // Safely clear all inputs on success
+        });
+    }
+});
